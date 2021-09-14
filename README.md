@@ -11,7 +11,7 @@ Store é um projeto simples usado para terinar o crud com as rotas HTTP, usando 
 ~~~
 * Inicie o projeto:
 ~~~javascript
-        $ npm start
-        //ou
-        $ yarn start
+    $ npm start
+    //ou
+    $ yarn start
 ~~~
