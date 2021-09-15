@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import S from './AddProduto.module.css'
+import imageMok from '../../assets/img/Add_Image_icon.svg'
 
 
 
@@ -74,7 +75,7 @@ const AddProduto = ({ produtos }) => {
         <div className={S.container}>
             <form action="" className={S.form}>
                 <section className={S.sectionTop}>
-                    <img src={url ? url : ''} alt="" className={S.imagem} />
+                    <img src={!!url ? url : imageMok} alt="" className={S.imagem} />
                     <div>
                         <fieldset
                             className={S.fieldset}>

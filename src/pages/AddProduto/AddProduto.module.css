@@ -48,9 +48,8 @@
     width: 40%;
     height: 250px;
     background-color: white;
-    background-image: url(../../assets/img/Add_Image_icon.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+    object-position: center;
+    object-fit: contain;
     border-radius: 10px;
 
 }
