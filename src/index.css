@@ -1,13 +1,41 @@
-body {
+/* Reset Css */
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box; 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* configurações padrão para a o ID root*/
+#root{
+  width: 100%;
+  height: 100vh;
+  background-color: #0C1117;
+  font-family: 'Roboto', sans-serif;
+
+  /* Variavies de cor */
+  --primaria: #0C1117 ;
+  --secundaria: #151B22 ;
+  --terciaria: #20262D;
+  --quartiaria: #30363D;
+  --branco: #f2f2f2;
+  --borda: #C9D1DA;
+  --preto: #101010;
+  --info: #58A6FF;
+  --sucesso: #1F8C3A;
+  --destaque: #122A40;
+  --bordaDestaque: #115D8C;
+  --cuidado: #D9303E;
+  --sombra: rgba(255, 255, 255, 0.3);
+}
+::-webkit-scrollbar{
+  width: 10px;
+  height: 80%;
+}
+::-webkit-scrollbar-track{
+  border-radius: 5px;
+  background-color: #151B22;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: #C9D1DA;
 }

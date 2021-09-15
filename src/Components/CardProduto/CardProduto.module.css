@@ -1,0 +1,28 @@
+.container {
+  width: 210px;
+  height: 300px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--destaque);
+  margin: 10px;
+  box-shadow: 2px 2px 2px var(--sombra);
+}
+
+.nome {
+  width: 90%;
+  font-size: 25px;
+  color: var(--info);
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.imagem {
+  width: 90%;
+  height: 60%;
+  border-radius: 15px;
+}
