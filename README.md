@@ -10,7 +10,7 @@ usando uma api criada com Json-Server
     //ou
     $ yarn
 ~~~
-    * Inicie o projeto:
+* Inicie o projeto:
 ~~~javascript
     $ npm start
     //ou
