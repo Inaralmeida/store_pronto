@@ -1,32 +1,23 @@
 import React from 'react'
 import S from './Home.module.css'
 import CardProduto from '../../Components/CardProduto/CardProduto'
-const Home = ({produto}) => {
-    
+const Home = ({ produtos }) => {
+
     return (
         <div className={S.container}>
-           <CardProduto
-           produto={produto}
-           />
-           <CardProduto
-           produto={produto}
-           />
-           <CardProduto
-           produto={produto}
-           />
-           <CardProduto
-           produto={produto}
-           />
-           <CardProduto
-           produto={produto}
-           />
-           <CardProduto
-           produto={produto}
-           />
-           <CardProduto
-           produto={produto}
-           />
-          
+            {
+                produtos &&
+                produtos.map((produto) => (
+                        <CardProduto
+                            key={produto.id}
+                            produto={produto}
+                        />
+                        
+                    )
+                )
+            }
+
+
         </div>
     )
 }

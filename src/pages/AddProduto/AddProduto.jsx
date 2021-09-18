@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import S from './AddProduto.module.css'
 import imageMok from '../../assets/img/Add_Image_icon.svg'
+import  {  fromString  }  from  'uuidv4'
+import APIRequest from '../../Services/api'
+import Notificacao from '../../Components/Notificacao/Notificacao'
 
 
 
 const AddProduto = ({ produtos }) => {
+   
 
     const fornecedores = [
         { value: 0, label: 'Amazon' },
@@ -13,16 +17,18 @@ const AddProduto = ({ produtos }) => {
         { value: 3, label: 'Kalunga' }
     ]
     const categorias = [
-        { value: 0, label: 'celular' },
-        { value: 1, label: 'camera' },
-        { value: 2, label: 'cpu' },
-        { value: 3, label: 'monitor' }
+        { value: 0, label: 'Celular' },
+        { value: 1, label: 'Camera' },
+        { value: 2, label: 'CPU' },
+        { value: 3, label: 'Monitor' },
+        { value: 4, label: 'Acessórios' },
     ]
     const marcas = [
-        { value: 0, label: 'motorola' },
-        { value: 1, label: 'sony' },
-        { value: 2, label: 'sansung' },
-        { value: 3, label: 'lenovo' }
+        { value: 0, label: 'Motorola' },
+        { value: 1, label: 'Sony' },
+        { value: 2, label: 'Sansung' },
+        { value: 3, label: 'Lenovo' },
+        { value: 4, label: 'Canon' }
     ]
 
     const [nome, setNome] = useState('')
@@ -33,9 +39,16 @@ const AddProduto = ({ produtos }) => {
     const [marca, setMarca] = useState(marcas[0].label)
     const [estoque, setEstoque] = useState('')
     const [preco, setPreco] = useState('')
+    const [conteudoNotificacao, setConteudoNotificacao] = useState({
+        mostrar: false,
+        type: '',
+        texto: ''
+    })
 
     const handleAddicionarProduto = (e) => {
-        const dados = {
+        e.preventDefault()
+        const data = {
+            id: fromString(nome),
             nome: nome,
             url: url,
             descricao: descricao,
@@ -43,9 +56,39 @@ const AddProduto = ({ produtos }) => {
             categoria: categoria,
             marca: marca,
             estoque: estoque,
-            preco: preco,
+            preco: parseFloat(preco),
         }
-        console.log(dados);
+        console.log(data);
+
+        APIRequest.post('/produtos', data)
+        .then((response)=>{
+            console.log(response);
+            if(response.status === 201){
+                console.log('Produto Adicionado com sucesso');
+                setConteudoNotificacao({
+                    mostrar: true,
+                    type:'sucesso',
+                    texto: 'Produto Adicionado com sucesso'
+                })
+
+                setNome('')
+                setUrl('')
+                setDescricao('')
+                setFornecedorId(fornecedores[0].value)
+                setCategoria(categorias[0].label)
+                setMarca(marcas[0].label)
+                setEstoque('')
+                setPreco('')
+            }
+        })
+        .catch((error)=>{
+            console.log(error);
+            setConteudoNotificacao({
+                mostrar: true,
+                type:'erro',
+                texto: 'Erro ao adicionar o produto'
+            })
+        })
     }
 
     const handleCancelar = (e) => {
@@ -73,6 +116,11 @@ const AddProduto = ({ produtos }) => {
 
     return (
         <div className={S.container}>
+            {
+                conteudoNotificacao.mostrar && 
+                <Notificacao
+                conteudoNotificacao={conteudoNotificacao}/>
+            }
             <form action="" className={S.form}>
                 <section className={S.sectionTop}>
                     <img src={!!url ? url : imageMok} alt="" className={S.imagem} />
@@ -141,7 +189,7 @@ const AddProduto = ({ produtos }) => {
                             </select>
                         </fieldset>
                         <fieldset className={S.fieldset}>
-                            <label className={S.label} htmlFor="">Marca</label>
+                            <label className={S.label} htmlFor="">Fornecedor</label>
                             <select
                                 required
 
