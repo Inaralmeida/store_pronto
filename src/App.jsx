@@ -14,7 +14,6 @@ function App() {
     APIRequest('/produtos')
     .then((response)=> {
       setProdutos(response.data)
-      console.log(response.data);
     })
   },[houveAlteracoes])
   return (
